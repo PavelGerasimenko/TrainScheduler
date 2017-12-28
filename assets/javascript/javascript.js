@@ -1,7 +1,6 @@
+$(document).ready(function(){
 
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
+  // initialize Firebase
   var config = {
     apiKey: "AIzaSyDl8CPr2FKWy-GXlrZXbOQhnQ5q-sqUGVo",
     authDomain: "trainscheduler-17c34.firebaseapp.com",
@@ -11,4 +10,35 @@
     messagingSenderId: "267037135602"
   };
   firebase.initializeApp(config);
-</script>
+
+  
+// Capture click
+$("#submitButton").on("click", function() {
+
+  // Variables hold user input
+  var trainName = $('#trainNameInput').val().trim();
+  var destination = $('#destinationInput').val().trim();
+  var time = $('#timeInput').val().trim();
+  var frequency = $('#frequencyInput').val().trim();
+
+
+  // When the input fields are filled
+  if (!(trainName && destination && time && frequency)) {
+    alert('please fill all fields');
+    return;
+  }{
+
+  // Push that data to Firebase
+  database.ref().push({
+    trainName: trainNameInput,
+    destination: destinationInput,
+    time: timeInput,
+    frequency: frequencyInput
+  });  
+ index++;
+ console.log ("New train");   
+}
+
+
+});
+}
